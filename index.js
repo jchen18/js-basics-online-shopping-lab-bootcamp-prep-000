@@ -24,24 +24,48 @@ function viewCart() {
     }else {
     const itemsAndPrices = [];
     const l = cart.length;
-      for (let i = 0; i< 0; i++){
+      for (let i = 0; i< l; i++){
         let itemAndPrice = cart[i];
         let item = Object.keys(itemAndPrice)[0];
         let price = itemAndPrice[item];
         itemsAndPrices.push(`${item} at \$${price}`);
       }
-    console.log(`In your cart, you have ${itemsAndPrices.join(', ')}.`);
+      console.log(itemsAndPrices)
+      if (cart.length == 1){
+          console.log(`In your cart, you have ${itemsAndPrices.join(', ')}.`);
+      }else if (cart.length == 2){
+          console.log(`In your cart, you have ${itemsAndPrices.join(' and ')}.`);
+      }else if (cart.length >= 3){
+        itemsAndPrices[l-1]= (`and ${itemsAndPrices[l-1]}`);
+      console.log(`In your cart, you have ${itemsAndPrices.join(', ')}.`);
+      }
     }
-
 }
 
 function total() {
-  // write your code here
+  let itemPrices = 0;
+  const l = cart.length;
+  const itemsAndPrices = [];
+  for (let i = 0; i < l; i++){
+  let itemAndPrice = cart[i];
+  let item = Object.keys(itemAndPrice)[0];
+  let price = itemAndPrice[item];
+  itemPrices = itemPrices + price;
+  }
+  return (itemPrices);
 }
 
 function removeFromCart(item) {
-  // write your code here
+  const l = cart.length;
+  for (let i = 0; i < l; i++){
+    if (cart.[i]hasOwnProperty){
+       cart = [...cart.slice(0,i),...cart.slice(i+1)];
+    }
+  }
+  console.log("That item is not in your cart.");
+  return (cart);
 }
+
 
 function placeOrder(cardNumber) {
   // write your code here
